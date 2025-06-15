@@ -1,0 +1,302 @@
+@import 'variables';
+
+// Reset and base styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    background-color: $background-color;
+    color: $secondary-color;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 $spacing-md;
+    line-height: 1.2;
+    color: $secondary-color;
+}
+
+h1 {
+    font-size: $font-size-2xl;
+}
+
+h2 {
+    font-size: $font-size-xl;
+}
+
+h3 {
+    font-size: $font-size-lg;
+}
+
+p {
+    margin: 0 0 $spacing-md;
+}
+
+// Layout
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-xl;
+
+    @include responsive($breakpoint-sm) {
+        padding: $spacing-2xl;
+    }
+}
+
+.checkout-container {
+    @include card;
+    max-width: 800px;
+    margin: $spacing-2xl auto;
+}
+
+// Form elements
+.form-group {
+    margin-bottom: $spacing-lg;
+
+    label {
+        display: block;
+        margin-bottom: $spacing-sm;
+        font-weight: 500;
+        color: $secondary-color;
+    }
+
+    input,
+    select,
+    textarea {
+        @include input-base;
+    }
+
+    .error-message {
+        color: $error-color;
+        font-size: $font-size-sm;
+        margin-top: $spacing-xs;
+    }
+}
+
+// Buttons
+.btn {
+    @include button-base;
+
+    &-primary {
+        background-color: $primary-color;
+        color: $white;
+
+        &:hover {
+            background-color: darken($primary-color, 5%);
+        }
+    }
+
+    &-secondary {
+        background-color: $white;
+        border: 1px solid $border-color;
+        color: $secondary-color;
+
+        &:hover {
+            background-color: $background-color;
+        }
+    }
+}
+
+// Utility classes
+.text-center {
+    text-align: center;
+}
+
+.mb-8 {
+    margin-bottom: $spacing-xl;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.gap-4 {
+    gap: $spacing-md;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@include responsive($breakpoint-md) {
+    .md\\:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// Stepper styles
+.stepper {
+    @include flex-between;
+    margin-bottom: 40px;
+
+    .step {
+        @include flex-center;
+        flex-direction: column;
+        position: relative;
+        flex: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: $border-color;
+            z-index: 0;
+        }
+
+        &:first-child::before {
+            display: none;
+        }
+
+        &.active {
+            color: $primary-color;
+
+            .step-number {
+                background-color: $primary-color;
+                color: white;
+            }
+
+            &::before {
+                background-color: $primary-color;
+            }
+        }
+
+        &.completed {
+            .step-number {
+                background-color: $success-color;
+            }
+
+            &::before {
+                background-color: $success-color;
+            }
+        }
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        @include flex-center;
+        background-color: $border-color;
+        border-radius: 50%;
+        margin-bottom: 8px;
+        z-index: 1;
+    }
+}
+
+// Cart summary styles
+.cart-summary {
+    @include card;
+    margin-bottom: 24px;
+
+    .item {
+        @include flex-between;
+        padding: 12px 0;
+        border-bottom: 1px solid $border-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .total {
+        @include flex-between;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px solid $border-color;
+        font-weight: 600;
+    }
+}
+
+// Payment method styles
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+
+    .payment-method {
+        @include card;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 2px solid transparent;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+
+        &.selected {
+            border-color: $primary-color;
+        }
+    }
+}
+
+// Animations
+.fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+    .checkout-container {
+        margin: 20px;
+        padding: 16px;
+    }
+
+    .stepper {
+        .step-label {
+            display: none;
+        }
+    }
+
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+}
