@@ -1,24 +1,29 @@
 @import '../variables';
 
 .product-page {
-    padding: $spacing-xl;
+    padding: $spacing-md;
     background-color: $background-color;
     min-height: 100vh;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .product-container {
+        width: 100%;
         max-width: 1200px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
-        gap: $spacing-2xl;
+        gap: $spacing-xl;
         background: $white;
         border-radius: $border-radius-lg;
-        padding: $spacing-xl;
+        padding: $spacing-md;
         box-shadow: $shadow-md;
 
         @include responsive($breakpoint-lg) {
             grid-template-columns: 1fr 1fr;
+            padding: $spacing-xl;
+            gap: $spacing-2xl;
         }
     }
 
@@ -38,17 +43,24 @@
 
             .favorite-button {
                 position: absolute;
-                top: $spacing-md;
-                right: $spacing-md;
+                top: $spacing-sm;
+                right: $spacing-sm;
                 background: $white;
                 border: none;
                 border-radius: 50%;
-                width: 40px;
-                height: 40px;
+                width: 2.5rem;
+                height: 2.5rem;
                 @include flex-center;
                 cursor: pointer;
                 transition: $transition-base;
                 box-shadow: $shadow-md;
+
+                @include responsive($breakpoint-md) {
+                    top: $spacing-md;
+                    right: $spacing-md;
+                    width: 2.75rem;
+                    height: 2.75rem;
+                }
 
                 &:hover {
                     transform: scale(1.1);
@@ -59,8 +71,13 @@
                 }
 
                 .icon {
-                    width: 20px;
-                    height: 20px;
+                    width: 1.25rem;
+                    height: 1.25rem;
+
+                    @include responsive($breakpoint-md) {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
                 }
             }
         }
@@ -68,7 +85,11 @@
         .thumbnail-list {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: $spacing-md;
+            gap: $spacing-sm;
+
+            @include responsive($breakpoint-md) {
+                gap: $spacing-md;
+            }
 
             .thumbnail {
                 border: 2px solid transparent;
@@ -98,13 +119,22 @@
 
     .product-details {
         h1 {
-            font-size: $font-size-2xl;
-            margin: 0 0 $spacing-lg;
+            font-size: $font-size-xl;
+            margin: 0 0 $spacing-md;
+
+            @include responsive($breakpoint-md) {
+                font-size: $font-size-2xl;
+                margin: 0 0 $spacing-lg;
+            }
         }
 
         .product-meta {
             @include flex-between;
-            margin-bottom: $spacing-xl;
+            margin-bottom: $spacing-lg;
+
+            @include responsive($breakpoint-md) {
+                margin-bottom: $spacing-xl;
+            }
 
             .rating {
                 display: flex;
@@ -112,9 +142,14 @@
                 gap: $spacing-xs;
 
                 .star {
-                    width: 20px;
-                    height: 20px;
+                    width: 1.25rem;
+                    height: 1.25rem;
                     color: #fbbf24;
+
+                    @include responsive($breakpoint-md) {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
 
                     &.filled {
                         fill: #fbbf24;
@@ -128,24 +163,43 @@
             }
 
             .price {
-                font-size: $font-size-xl;
+                font-size: $font-size-lg;
                 font-weight: 600;
                 color: $primary-color;
+
+                @include responsive($breakpoint-md) {
+                    font-size: $font-size-xl;
+                }
             }
         }
 
         .description {
             color: $secondary-color;
             line-height: 1.6;
-            margin-bottom: $spacing-xl;
+            margin-bottom: $spacing-lg;
+            font-size: $font-size-sm;
+
+            @include responsive($breakpoint-md) {
+                margin-bottom: $spacing-xl;
+                font-size: $font-size-base;
+            }
         }
 
         .features {
-            margin-bottom: $spacing-xl;
+            margin-bottom: $spacing-lg;
+
+            @include responsive($breakpoint-md) {
+                margin-bottom: $spacing-xl;
+            }
 
             h3 {
-                font-size: $font-size-lg;
-                margin-bottom: $spacing-md;
+                font-size: $font-size-base;
+                margin-bottom: $spacing-sm;
+
+                @include responsive($breakpoint-md) {
+                    font-size: $font-size-lg;
+                    margin-bottom: $spacing-md;
+                }
             }
 
             ul {
@@ -154,10 +208,16 @@
                 margin: 0;
 
                 li {
-                    padding: $spacing-sm 0;
+                    padding: $spacing-xs 0;
                     color: $secondary-color;
                     display: flex;
                     align-items: center;
+                    font-size: $font-size-sm;
+
+                    @include responsive($breakpoint-md) {
+                        padding: $spacing-sm 0;
+                        font-size: $font-size-base;
+                    }
 
                     &:before {
                         content: '•';
@@ -169,29 +229,54 @@
         }
 
         .options {
-            margin-bottom: $spacing-xl;
+            margin-bottom: $spacing-lg;
+
+            @include responsive($breakpoint-md) {
+                margin-bottom: $spacing-xl;
+            }
 
             .size-selection {
-                margin-bottom: $spacing-lg;
+                margin-bottom: $spacing-md;
+
+                @include responsive($breakpoint-md) {
+                    margin-bottom: $spacing-lg;
+                }
 
                 label {
                     display: block;
-                    margin-bottom: $spacing-sm;
+                    margin-bottom: $spacing-xs;
                     font-weight: 500;
+                    font-size: $font-size-sm;
+
+                    @include responsive($breakpoint-md) {
+                        margin-bottom: $spacing-sm;
+                        font-size: $font-size-base;
+                    }
                 }
 
                 .size-buttons {
                     display: flex;
-                    gap: $spacing-sm;
+                    gap: $spacing-xs;
+
+                    @include responsive($breakpoint-md) {
+                        gap: $spacing-sm;
+                    }
 
                     .size-button {
                         @include button-base;
-                        min-width: 48px;
-                        height: 48px;
+                        min-width: 2.5rem;
+                        height: 2.5rem;
                         padding: 0;
                         background: $white;
                         border: 1px solid $border-color;
                         color: $secondary-color;
+                        font-size: $font-size-sm;
+
+                        @include responsive($breakpoint-md) {
+                            min-width: 3rem;
+                            height: 3rem;
+                            font-size: $font-size-base;
+                        }
 
                         &:hover {
                             border-color: $primary-color;
@@ -210,8 +295,14 @@
             .quantity-selection {
                 label {
                     display: block;
-                    margin-bottom: $spacing-sm;
+                    margin-bottom: $spacing-xs;
                     font-weight: 500;
+                    font-size: $font-size-sm;
+
+                    @include responsive($breakpoint-md) {
+                        margin-bottom: $spacing-sm;
+                        font-size: $font-size-base;
+                    }
                 }
 
                 select {
@@ -219,6 +310,11 @@
                     width: 100px;
                     color: $text-color;
                     background-color: $white;
+                    font-size: $font-size-sm;
+
+                    @include responsive($breakpoint-md) {
+                        font-size: $font-size-base;
+                    }
 
                     option {
                         color: $text-color;
@@ -228,127 +324,181 @@
             }
         }
 
-        .cart-checkout {
-            // position: ;
-            bottom: 48px;
-            right: 48px;
-            display: flex;
-            align-items: center;
-            gap: $spacing-md;
-            z-index: 100;
-
-            .cart-icon {
-                position: relative;
-                cursor: pointer;
-                width: 3rem;
-                height: 3rem;
-                border-radius: $border-radius-md;
-                background: $white;
-                box-shadow: $shadow-md;
-                transition: $transition-base;
-                @include flex-center;
-
-                &:hover {
-                    transform: translateY(-2px);
-                    box-shadow: $shadow-lg;
-                }
-
-                .icon {
-                    width: 1.5rem;
-                    height: 1.5rem;
-                    color: $primary-color;
-                }
-
-                .cart-count {
-                    position: absolute;
-                    top: -0.5rem;
-                    right: -0.5rem;
-                    background: $primary-color;
-                    color: $white;
-                    font-size: $font-size-xs;
-                    font-weight: 600;
-                    width: 1.25rem;
-                    height: 1.25rem;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
-
-            .checkout-button {
-                @include button-base;
-                width: 100%;
-                background: $white;
-                color: $primary-color;
-                padding: $spacing-lg;
-                border: 1px solid $border-color;
-                font-size: $font-size-lg;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: $spacing-sm;
-                margin-bottom: $spacing-xl;
-
-                &:hover {
-                    background: darken($white, 2%);
-                    transform: translateY(-2px);
-                    box-shadow: $shadow-md;
-                }
-            }
-        }
-
         .add-to-cart {
             @include button-base;
             width: 100%;
             background: $primary-color;
             color: $white;
-            padding: $spacing-lg;
-            font-size: $font-size-lg;
+            padding: $spacing-md;
+            font-size: $font-size-base;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: $spacing-sm;
-            margin-bottom: $spacing-xl;
+            margin-bottom: $spacing-lg;
+
+            @include responsive($breakpoint-md) {
+                padding: $spacing-lg;
+                font-size: $font-size-lg;
+                margin-bottom: $spacing-xl;
+            }
 
             &:hover {
                 background: darken($primary-color, 5%);
             }
 
             .icon {
-                width: 24px;
-                height: 24px;
+                width: 1.25rem;
+                height: 1.25rem;
+
+                @include responsive($breakpoint-md) {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
             }
         }
 
         .benefits {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: $spacing-lg;
-            padding-top: $spacing-xl;
+            grid-template-columns: 1fr;
+            gap: $spacing-md;
+            padding-top: $spacing-lg;
             border-top: 1px solid $border-color;
+
+            @include responsive($breakpoint-md) {
+                grid-template-columns: repeat(3, 1fr);
+                gap: $spacing-lg;
+                padding-top: $spacing-xl;
+            }
 
             .benefit {
                 display: flex;
                 align-items: center;
-                gap: $spacing-md;
+                gap: $spacing-sm;
+
+                @include responsive($breakpoint-md) {
+                    gap: $spacing-md;
+                }
 
                 .icon {
-                    width: 24px;
-                    height: 24px;
+                    width: 1.25rem;
+                    height: 1.25rem;
                     color: $primary-color;
+
+                    @include responsive($breakpoint-md) {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
                 }
 
                 h4 {
                     margin: 0 0 $spacing-xs;
-                    font-size: $font-size-base;
+                    font-size: $font-size-sm;
+
+                    @include responsive($breakpoint-md) {
+                        font-size: $font-size-base;
+                        margin: 0 0 $spacing-sm;
+                    }
                 }
 
                 p {
                     margin: 0;
                     color: $secondary-color;
-                    font-size: $font-size-sm;
+                    font-size: $font-size-xs;
+
+                    @include responsive($breakpoint-md) {
+                        font-size: $font-size-sm;
+                    }
                 }
+            }
+        }
+    }
+
+    .cart-checkout {
+        position: fixed;
+        bottom: $spacing-md;
+        right: $spacing-md;
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        z-index: 100;
+
+        @include responsive($breakpoint-md) {
+            bottom: $spacing-xl;
+            right: $spacing-xl;
+            gap: $spacing-md;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: $border-radius-md;
+            background: $white;
+            box-shadow: $shadow-md;
+            transition: $transition-base;
+            @include flex-center;
+
+            @include responsive($breakpoint-md) {
+                width: 3rem;
+                height: 3rem;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: $shadow-lg;
+            }
+
+            .icon {
+                width: 1.25rem;
+                height: 1.25rem;
+                color: $primary-color;
+
+                @include responsive($breakpoint-md) {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+
+            .cart-count {
+                position: absolute;
+                top: -0.5rem;
+                right: -0.5rem;
+                background: $primary-color;
+                color: $white;
+                font-size: $font-size-xs;
+                font-weight: 600;
+                width: 1.25rem;
+                height: 1.25rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .checkout-button {
+            @include button-base;
+            background: $primary-color;
+            color: $white;
+            padding: $spacing-sm $spacing-md;
+            font-size: $font-size-sm;
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            height: 2.5rem;
+            white-space: nowrap;
+
+            @include responsive($breakpoint-md) {
+                padding: $spacing-sm $spacing-lg;
+                height: 3rem;
+            }
+
+            &:hover {
+                background: darken($primary-color, 5%);
+                transform: translateY(-2px);
+                box-shadow: $shadow-md;
             }
         }
     }

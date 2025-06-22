@@ -5,13 +5,26 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+    align-content: center;
 }
+// #root {
+//     // width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     margin: 0;
+//     padding: 0;
+// }
 
 body {
     font-family: $font-family;
     background-color: $background-color;
     color: $secondary-color;
     line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -48,18 +61,23 @@ p {
 .container {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
     padding: $spacing-xl;
+    align-content: center;
 
     @include responsive($breakpoint-sm) {
         padding: $spacing-2xl;
+    }
+
+    @media (max-width: 600px) {
+        width: 90%;
     }
 }
 
 .checkout-container {
     @include card;
-    max-width: 800px;
-    margin: $spacing-2xl auto;
+    width: 100%;
+    margin: 0;
 }
 
 // Form elements
@@ -101,7 +119,7 @@ p {
 
     &-secondary {
         background-color: $white;
-        border: 1px solid $border-color;
+        border: none;
         color: $secondary-color;
 
         &:hover {
@@ -129,6 +147,12 @@ p {
 
 .justify-between {
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-md;
+    }
 }
 
 .items-center {
@@ -217,6 +241,7 @@ p {
 // Cart summary styles
 .cart-summary {
     @include card;
+    width: 100%;
     margin-bottom: 24px;
 
     .item {
@@ -285,10 +310,9 @@ p {
 
 // Responsive styles
 @media (max-width: 768px) {
-    .checkout-container {
-        margin: 20px;
-        padding: 16px;
-    }
+    // .checkout-container {
+    //     margin: 16px;
+    // }
 
     .stepper {
         .step-label {

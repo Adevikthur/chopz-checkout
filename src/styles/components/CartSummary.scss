@@ -2,7 +2,7 @@
 
 .cart-summary {
     @include card;
-    max-width: 800px;
+    width: fit-content;
     margin: 0 auto;
 
     .cart-header {
@@ -34,6 +34,7 @@
             gap: $spacing-lg;
             padding: $spacing-lg 0;
             border-bottom: 1px solid $border-color;
+            width: 100%;
 
             &:last-child {
                 border-bottom: none;

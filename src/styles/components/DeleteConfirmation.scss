@@ -59,7 +59,8 @@
                 color: $white;
 
                 &:hover {
-                    background: darken($error-color, 10%);
+                    background: darken($error-color, 10%); 
+                    // Error: The `darken` function is not a native CSS function; it is a SCSS function. This line is correct in SCSS, but if this file is processed as plain CSS, it will not work. Ensure your build pipeline supports SCSS. If not, replace with a valid color value.
                 }
             }
         }
