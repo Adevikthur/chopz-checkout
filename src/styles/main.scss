@@ -5,28 +5,49 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
     align-content: center;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
 }
-// #root {
-//     // width: 100%;
-//     display: flex;
-//     justify-content: center;
-//     margin: 0;
-//     padding: 0;
-// }
+
+#root {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+}
 
 body {
     font-family: $font-family;
-    background-color: $background-color;
+    background-color: $white;
     color: $secondary-color;
     line-height: 1.5;
     display: flex;
     justify-content: center;
+    width: 100%;
     padding: 0;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 // Typography
@@ -71,6 +92,7 @@ p {
 
     @media (max-width: 600px) {
         width: 90%;
+        padding: $spacing-sm;
     }
 }
 
@@ -87,7 +109,7 @@ p {
     label {
         display: block;
         margin-bottom: $spacing-sm;
-        font-weight: 500;
+        font-weight: 700;
         color: $secondary-color;
     }
 
@@ -95,6 +117,8 @@ p {
     select,
     textarea {
         @include input-base;
+        color: $secondary-color;
+        background-color: $white;
     }
 
     .error-message {
@@ -243,6 +267,16 @@ p {
     @include card;
     width: 100%;
     margin-bottom: 24px;
+    border: none;
+    box-shadow: none;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+    }
 
     .item {
         @include flex-between;
@@ -260,6 +294,14 @@ p {
         padding-top: 20px;
         border-top: 2px solid $border-color;
         font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+
     }
 }
 
@@ -310,9 +352,9 @@ p {
 
 // Responsive styles
 @media (max-width: 768px) {
-    // .checkout-container {
-    //     margin: 16px;
-    // }
+    .checkout-container {
+        margin: 0px;
+    }
 
     .stepper {
         .step-label {
