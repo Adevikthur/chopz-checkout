@@ -132,27 +132,43 @@
             @include flex-between;
             margin-bottom: $spacing-lg;
 
-            @include responsive($breakpoint-md) {
-                margin-bottom: $spacing-xl;
+            @media screen and (max-width: 600px) {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: $spacing-md;
             }
 
             .rating {
                 display: flex;
+                justify-content: flex-start;
                 align-items: center;
                 gap: $spacing-xs;
+                width: 100%;
+                padding: $spacing-md 0;
+
+                @media screen and (max-width: 600px) {
+                    width: auto;
+                    padding: 0;
+                    display: flex;
+                    padding: $spacing-xs 0;
+
+                }
 
                 .star {
                     width: 1.25rem;
                     height: 1.25rem;
                     color: #fbbf24;
 
-                    @include responsive($breakpoint-md) {
-                        width: 1.5rem;
-                        height: 1.5rem;
+                    @media screen and (max-width: 600px) {
+                        width: 48px;
+                        height: auto;
                     }
 
                     &.filled {
                         fill: #fbbf24;
+                    }
+                    span{
+                        width: fit-content;
                     }
                 }
 
@@ -169,6 +185,7 @@
 
                 @include responsive($breakpoint-md) {
                     font-size: $font-size-xl;
+                    
                 }
             }
         }
@@ -490,9 +507,22 @@
             height: 2.5rem;
             white-space: nowrap;
 
+            @media screen and (max-width: 600px) {
+                padding: $spacing-md;
+                font-size: $font-size-sm;
+                height: 2.5rem;
+                width: fit-content;
+                position: fixed;
+                bottom: $spacing-md;
+                right: $spacing-md;
+                z-index: 100;
+                text-align: center;
+            }
+
             @include responsive($breakpoint-md) {
                 padding: $spacing-sm $spacing-lg;
                 height: 3rem;
+                width: 120px;
             }
 
             &:hover {
